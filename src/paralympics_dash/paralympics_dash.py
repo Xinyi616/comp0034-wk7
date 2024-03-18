@@ -1,6 +1,12 @@
 # Version after the final activity in week 6
-from dash import Dash, html
+from dash import Dash, html, dcc
 import dash_bootstrap_components as dbc
+# Add an import to import the line_chart function
+from figures import line_chart
+
+
+# Create the Plotly Express line chart object, e.g. to show number of sports
+line = line_chart("sports")
 
 # Variable that contains the external_stylesheet to use, in this case Bootstrap styling from dash bootstrap
 # components (dbc)
@@ -13,6 +19,8 @@ meta_tags = [
 
 # Pass the stylesheet variable to the Dash app constructor
 app = Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=meta_tags)
+
+
 
 # Variables that define the three rows and their contents
 card = dbc.Card(
@@ -85,7 +93,8 @@ row_two = dbc.Row([
 
 row_three = dbc.Row([
     dbc.Col(children=[
-        html.Img(src=app.get_asset_url('line-chart-placeholder.png'), className="img-fluid"),
+        # Add this line:
+        dcc.Graph(id="line", figure=line),
     ], width=4),
     dbc.Col(children=[
         html.Img(src=app.get_asset_url('bar-chart-placeholder.png'), className="img-fluid"),

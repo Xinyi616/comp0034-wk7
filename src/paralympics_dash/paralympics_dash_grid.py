@@ -2,6 +2,7 @@
 from dash import Dash, html
 import dash_bootstrap_components as dbc
 
+
 # Variable that contains the external_stylesheet to use, in this case Bootstrap styling from dash bootstrap
 # components (dbc)
 external_stylesheets = [dbc.themes.BOOTSTRAP]
